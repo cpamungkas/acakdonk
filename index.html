@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sistem Undian Hadiah</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside id="side">
+  <div class="brand">Undian Hadiah</div>
+  <nav>
+    <button data-p="dash" class="on">Dashboard</button>
+    <button data-p="peserta">Master Peserta</button>
+    <button data-p="hadiah">Master Hadiah</button>
+    <button data-p="draw">Mulai Undian</button>
+    <button data-p="win">Daftar Pemenang</button>
+    <button data-p="backup">Backup &amp; Restore</button>
+    <button id="btnReset" class="danger">Reset Data</button>
+  </nav>
+</aside>
+<main>
+  <section id="dash" class="page on">
+    <h1>Dashboard</h1>
+    <div id="cards" class="cards"></div>
+    <h2>Status Kesiapan</h2>
+    <div id="status" class="badges"></div>
+  </section>
+
+  <section id="peserta" class="page">
+    <h1>Master Peserta</h1>
+    <p class="hint">Kolom wajib: NIK, Nama, DIVISI, UNIT, LOKASI.</p>
+    <label class="file">Upload peserta.xlsx / .csv<input type="file" id="fPeserta" accept=".xlsx,.xls,.csv"></label>
+    <div id="tPeserta" class="tbl"></div>
+  </section>
+
+  <section id="hadiah" class="page">
+    <h1>Master Hadiah</h1>
+    <p class="hint">Kolom wajib: NamaHadiah, QtyHadiah.</p>
+    <label class="file">Upload hadiah.xlsx / .csv<input type="file" id="fHadiah" accept=".xlsx,.xls,.csv"></label>
+    <div id="tHadiah" class="tbl"></div>
+  </section>
+
+  <section id="draw" class="page">
+    <div class="drawbar">
+      <select id="selH"></select>
+      <span id="hInfo"></span>
+      <button id="btnFs" class="ghost">Layar penuh</button>
+    </div>
+    <div id="stage">
+      <div id="prize"></div>
+      <div id="slots" class="slots"></div>
+      <div id="stageMsg"></div>
+      </div>
+    <div class="ctrl">
+        <button id="btnStart" class="gold">MULAI UNDIAN</button>
+        <button id="btnStop" class="gold" hidden>STOP / TAMPILKAN PEMENANG</button>
+      </div>
+  </section>
+
+  <section id="win" class="page">
+    <h1>Daftar Pemenang</h1>
+    <div class="filters">
+      <input id="fQ" placeholder="Cari nama / NIK">
+      <select id="fH"></select>
+      <select id="fS"><option value="">Semua status</option><option>HADIR</option><option>TIDAK HADIR</option></select>
+      <button id="xXlsx" class="gold">Export Excel</button>
+      <button id="xPdf" class="gold">Export PDF</button>
+      <button id="xCsv" class="ghost">Export CSV</button>
+    </div>
+    <h2>Pemenang Hadir <span id="nH"></span></h2><div id="tHadir" class="tbl"></div>
+    <h2>Pemenang Tidak Hadir <span id="nA"></span></h2><div id="tAbsen" class="tbl"></div>
+  </section>
+
+  <section id="backup" class="page">
+    <h1>Backup &amp; Restore</h1>
+    <p class="hint">Backup berisi seluruh master data, riwayat undian, dan sesi yang sedang berjalan.</p>
+    <button id="btnBackup" class="gold">Unduh backup JSON</button>
+    <label class="file">Restore dari JSON<input type="file" id="fRestore" accept=".json"></label>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
